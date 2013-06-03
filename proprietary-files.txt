@@ -63,9 +63,9 @@ etc/firmware/wcnss.flist
 etc/firmware/wcnss.mdt
 etc/firmware/wcd9310/wcd9310_anc.bin
 etc/firmware/wcd9310/wcd9310_mbhc.bin
-etc/firmware/wifi/prima/WCNSS_cfg.dat
-etc/firmware/wifi/prima/WCNSS_qcom_cfg.ini
-etc/firmware/wifi/prima/WCNSS_qcom_wlan_nv.bin
+etc/firmware/wlan/prima/WCNSS_cfg.dat
+etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 lib/libacdbloader.so
 lib/libadsprpc.so
 lib/libalarmservice_jni.so
