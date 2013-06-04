@@ -61,7 +61,6 @@ PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/init.sony.rc:root/init.sony.rc \
     $(SONY_ROOT)/init.sony.usb.rc:root/init.sony.usb.rc \
     $(SONY_ROOT)/system/etc/apns-conf.xml:system/etc/apns-conf.xml \
-    $(SONY_ROOT)/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(SONY_ROOT)/system/etc/gps.conf:system/etc/gps.conf \
     $(SONY_ROOT)/system/etc/init.sony.bt.sh:system/etc/init.sony.bt.sh \
     $(SONY_ROOT)/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
