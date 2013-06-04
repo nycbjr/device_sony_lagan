@@ -66,6 +66,12 @@ etc/firmware/wcd9310/wcd9310_mbhc.bin
 etc/firmware/wlan/prima/WCNSS_cfg.dat
 etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+lib/libsensors_akm8963.so
+lib/libMPU3050.so
+lib/libmpl.so
+lib/libmllite.so
+lib/libmllite.so
+lib/libmlplatform.so 
 lib/libacdbloader.so
 lib/libadsprpc.so
 lib/libalarmservice_jni.so
