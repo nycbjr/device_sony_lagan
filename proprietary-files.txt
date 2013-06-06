@@ -221,7 +221,7 @@ lib/egl/libGLESv2_adreno200.so
 lib/egl/libGLESv2S3D_adreno200.so
 lib/egl/libq3dtools_adreno200.so
 lib/hw/camera.msm8960.so
-lib/hw/camero.qcom.so
+lib/hw/camera.qcom.so
 lib/hw/copybit.msm8960.so
 lib/hw/gralloc.msm8960.so
 lib/hw/hwcomposer.msm8960.so
