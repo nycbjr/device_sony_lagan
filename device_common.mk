@@ -102,6 +102,12 @@ PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/system/usr/keylayout/pmic8xxx_pwrkey.kcm:system/usr/keylayout/pmic8xxx_pwrkey.kcm \
     $(SONY_ROOT)/system/usr/keylayout/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
     $(SONY_ROOT)/ueventd.sony.rc:root/ueventd.sony.rc \
+    $(SONY_ROOT)/init.recovery.qcom.rc:root/init.recovery.qcom.rc 
+
+COMMON_PATH := device/sony/lagan
+# Post recovery script
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
