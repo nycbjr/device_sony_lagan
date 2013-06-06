@@ -70,13 +70,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=128.0f \
     ro.opengles.version=131072 \
     wifi.interface=wlan0 \
-    ro.carrier=wifi-only \
-    ro.device.chipset="Qualcomm APQ8064 Snapdragon" \
-    ro.device.cpu="Quad-core 1.5 GHz S4 Pro" \
-    ro.device.gpu="Adreno 320" \
-    ro.device.front_cam="2MP, 720p" \
-    ro.device.rear_cam="8MP, 1080p" \
-    ro.device.screen_res="1920 x 1080 pixels, 10.1 IPS+"
+    ro.carrier=wifi-only
 
 # Platform specific default properties
 #
