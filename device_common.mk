@@ -46,7 +46,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Platform specific properties
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cwm.enable_key_repeat=true \
+    persist.gps.qmienabled=truee \
     ro.qualcomm.bt.hci_transport=smd \
     af.resampler.quality=255 \
     debug.composition.type=dyn \
