@@ -151,6 +151,7 @@ lib/libmemalloc.so
 lib/libmercury.so
 lib/libmiscta.so
 lib/libmm-abl.so
+lib/liboemcamera.so
 lib/libmm-audio-resampler.so
 lib/libmmcamera_hdr_lib.so
 lib/libmmcamera_image_stab.so
