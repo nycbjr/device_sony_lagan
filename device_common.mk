@@ -62,7 +62,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.add_power_save=1 \
     persist.radio.oem_socket=false \
     ril.subscription.types=NV,RUIM \
-    rild.libargs=-d /dev/smd0 \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ro.com.android.dataroaming=false \
     ro.com.google.clientidbase.ms=android-sonymobile \
