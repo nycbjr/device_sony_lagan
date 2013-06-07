@@ -225,6 +225,15 @@ lib/libwifiscanner.so
 lib/libxt_v02.so
 lib/libxtwifi_ulp_adaptor.so
 lib/libxtwifi_zpp_adaptor.so
+lib/libmmcamera_frameproc.so 
+lib/libmmcamera_imx091.so
+lib/libmmcamera_plugin.so
+lib/libmmcamera_hdr_lib.so 
+lib/libmmcamera_interface2.so 
+lib/libmmcamera_statsproc31.so
+lib/libmmcamera_image_stab.so
+lib/libmmcamera_interface.so
+lib/libmmcamera_wavelet_lib.so
 lib/egl/egl.cfg
 lib/egl/eglsubAndroid.so
 lib/egl/libEGL_adreno200.so
