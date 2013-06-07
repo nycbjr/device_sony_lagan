@@ -62,6 +62,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/lagan/custombootimg.mk
 TARGET_RELEASETOOLS_EXTENSIONS := device/sony/lagan
 BOARD_CUSTOM_GRAPHICS := ../../../device/sony/lagan/recovery/graphics.c
+TARGET_RECOVERY_FSTAB := device/sony/lagan/recovery.fstab
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
 #TWRP flags
