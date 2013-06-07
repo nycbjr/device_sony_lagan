@@ -38,6 +38,16 @@ PRODUCT_PACKAGES += \
     libnfc_jni \
     p2p_supplicant.conf \
     sensors.default \
+    camera.qcom \
+    camera.msm8960 \
+    libmmcamera_interface2 \
+    libmmcamera_interface \
+    mm-vdec-omx-test \
+    mm-venc-omx-test720p \
+    libdivxdrmdecrypt \
+    libOmxVdec \
+    libOmxVenc \
+    libOmxCore 
 
 # Platform specific tags
 #
