@@ -11,6 +11,7 @@ bin/ta2bin
 bin/taimport
 bin/ta_qmi_client
 bin/ta_param_loader
+bin/mm-qcamera-daemon
 bin/thermald
 etc/thermald.conf
 etc/audio_policy.conf
