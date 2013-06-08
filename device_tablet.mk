@@ -27,11 +27,11 @@ PRODUCT_COPY_FILES += \
 # We need the ril and some properties, so copy that from full_base_telephony.mk
 # If you look at that file, you'll see that this is the order things are done.
 #
-PRODUCT_PROPERTY_OVERRIDES += \
+#PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     ro.com.android.dataroaming=true
 
-PRODUCT_PACKAGES += rild
+#PRODUCT_PACKAGES += rild
 
 # Carry on
 #

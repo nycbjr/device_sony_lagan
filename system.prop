@@ -1,32 +1,7 @@
-af.resampler.quality=255
-debug.composition.type=dyn
-debug.egl.hw=1
-debug.enable.wl_log=1
-debug.mdpcomp.logs=0
-debug.sf.hw=1
-dev.pm.dyn_samplingrate=1
-persist.audio.fluence.mode=endfire
-persist.audio.handset.mic=analog
-persist.audio.lowlatency.rec=false
-persist.hwc.mdpcomp.enable=true
-persist.radio.add_power_save=1
-persist.radio.oem_socket=false
-ril.subscription.types=NV,RUIM
-rild.libargs=-d /dev/smd0
-rild.libpath=/system/lib/libril-qc-qmi-1.so
-ro.com.android.dataroaming=false
-ro.com.google.clientidbase.ms=android-sonymobile
-ro.com.google.clientidbase=android-sonyericsson
-ro.hwui.text_small_cache_width=2048
-ro.hwui.texture_cache_size=128.0f
-ro.opengles.version=131072
-wifi.interface=wlan0
-ro.carrier=wifi-only
-
 # Addidional info for Settings/About/Hardware
 ro.device.chipset=Qualcomm APQ8064 Snapdragon
 ro.device.cpu=Quad-core 1.5 GHz S4 Pro
 ro.device.gpu=Adreno 320
-ro.device.front_cam=1.3MP, 720p
+ro.device.front_cam=2.0MP, 720p
 ro.device.rear_cam=8MP, 1080p
-ro.device.screen_res=1920 x 1080 pixels, 10.1 IPS+
+ro.device.screen_res=1920 x 1200 pixels, 10.1 IPS+
