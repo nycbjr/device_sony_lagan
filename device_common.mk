@@ -40,14 +40,22 @@ PRODUCT_PACKAGES += \
     sensors.default \
     camera.qcom \
     camera.msm8960 \
+    power.msm8960 \
     libmmcamera_interface2 \
     libmmcamera_interface \
     mm-vdec-omx-test \
     mm-venc-omx-test720p \
+    libnetcmdiface
+    libc2dcolorconvert \
     libdivxdrmdecrypt \
+    libOmxCore \
     libOmxVdec \
     libOmxVenc \
-    libOmxCore 
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libstagefrighthw
 
 # Platform specific tags
 #
