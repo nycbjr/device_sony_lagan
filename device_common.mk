@@ -40,7 +40,6 @@ PRODUCT_PACKAGES += \
     sensors.default \
     camera.qcom \
     camera.msm8960 \
-    power.msm8960 \
     libmmcamera_interface2 \
     libmmcamera_interface \
     mm-vdec-omx-test \
