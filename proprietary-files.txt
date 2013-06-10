@@ -10,8 +10,6 @@ bin/hci_qcomm_init
 bin/efsks
 bin/ks
 bin/mpdecision
-
-bin/qmuxd
 bin/qrngd
 bin/qseecomd
 bin/rmt_storage
@@ -214,7 +212,7 @@ lib/libmmcamera_statsproc31.so
 lib/libmmcamera_wavelet_lib.so
 lib/libmmjpeg.so
 lib/libmmQSM.so
-libbmsapm_jni.so
+lib/libbmsapm_jni.so
 lib/libmsapu_jni.so
 lib/libnetmgr.so
 lib/libNimsWrap.so
