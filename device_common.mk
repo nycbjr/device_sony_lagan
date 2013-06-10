@@ -44,7 +44,7 @@ PRODUCT_PACKAGES += \
     libmmcamera_interface \
     mm-vdec-omx-test \
     mm-venc-omx-test720p \
-    libnetcmdiface
+    libnetcmdiface \
     libc2dcolorconvert \
     libdivxdrmdecrypt \
     libOmxCore \
