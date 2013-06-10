@@ -21,7 +21,6 @@ DEVICE_PACKAGE_OVERLAYS += device/sony/lagan/overlay
 PRODUCT_PACKAGES += \
     Nfc \
     Tag \
-    hwcomposer.msm8960 
     alsa.msm8960 \
     audio.a2dp.default \
     audio.primary.msm8960 \
@@ -39,11 +38,13 @@ PRODUCT_PACKAGES += \
     libnfc_jni \
     p2p_supplicant.conf \
     sensors.default \
+    camera.qcom \
+    camera.msm8960 \
     libmmcamera_interface2 \
     libmmcamera_interface \
     mm-vdec-omx-test \
     mm-venc-omx-test720p \
-    libnetcmdiface \
+    libnetcmdiface
     libc2dcolorconvert \
     libdivxdrmdecrypt \
     libOmxCore \
@@ -62,7 +63,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Platform specific properties
 #
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.gps.qmienabled=true \
+    persist.gps.qmienabled=truee \
     ro.qualcomm.bt.hci_transport=smd \
     af.resampler.quality=255 \
     debug.composition.type=dyn \
