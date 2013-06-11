@@ -29,7 +29,7 @@ PRODUCT_PACKAGES += \
     audio_policy.msm8960 \
     com.android.nfc_extras \
     e2fsck \
-    gps.msm8960 \
+    gps.default \
     libaudio-resampler \
     libgps.utils \
     libloc_adapter \
@@ -38,6 +38,7 @@ PRODUCT_PACKAGES += \
     libnfc_jni \
     p2p_supplicant.conf \
     sensors.default \
+    libnetcmdiface \
     camera.qcom \
     camera.msm8960 \
     libmmcamera_interface2 \
