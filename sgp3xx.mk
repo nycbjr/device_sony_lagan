@@ -62,6 +62,7 @@ PRODUCT_PACKAGES += \
     gps.msm8960 \
     libgps.utils \
     libloc_adapter \
+    libloc_api_v02 \
     libloc_eng 
 
 # NFC Support
