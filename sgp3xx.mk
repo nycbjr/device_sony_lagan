@@ -57,6 +57,13 @@ PRODUCT_PACKAGES += \
     gralloc.msm8960 \
     copybit.msm8960
 
+# QCOM GPS
+PRODUCT_PACKAGES += \
+    gps.msm8960 \
+    libgps.utils \
+    libloc_adapter \
+    libloc_eng 
+
 # NFC Support
 PRODUCT_PACKAGES += \
     libnfc \
@@ -115,7 +122,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
 
 PRODUCT_PACKAGES += \
-    FmRadio
+    FmRadio \
+    XperiaSettings
 
 # Key layouts and touchscreen
 PRODUCT_COPY_FILES += \

@@ -190,6 +190,9 @@ on boot
     write /proc/sys/net/core/rmem_max  1220608
     write /proc/sys/net/core/wmem_max  1220608
 
+    write /sys/devices/i2c-3/3-0024/cyttsp_update_fw 1
+    write /sys/devices/i2c-3/3-005b/update_fw 1
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
