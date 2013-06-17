@@ -39,6 +39,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.google.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
 
+PRODUCT_PACKAGES += \
+    libnetcmdiface
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
