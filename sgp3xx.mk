@@ -40,7 +40,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
 
 PRODUCT_PACKAGES += \
-    libnetcmdiface
+    libnetcmdiface \
+    libloc_adapter \
+    libloc_eng \
+    libloc_api_v02 \
+    libgps.utils \
+    gps.msm8960
+
 
 # GPS
 PRODUCT_COPY_FILES += \
