@@ -52,6 +52,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
+# HDMI
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/etc//DxHDCP.cfg:system/etc//DxHDCP.cfg
+
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
@@ -59,7 +63,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
     $(COMMON_PATH)/rootdir/init.target.rc:root/init.target.rc \
-    $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom
+    $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
+    $(COMMON_PATH)/rootdir/system/etc/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh
 
 # QCOM Display
 PRODUCT_PACKAGES += \
