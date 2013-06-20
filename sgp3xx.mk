@@ -186,9 +186,9 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/sbin/fota-mke2fs:root/sbin/fota-mke2fs \
     $(COMMON_PATH)/rootdir/sbin/fota-ua:root/sbin/fota-ua \
     $(COMMON_PATH)/rootdir/sbin/mr:root/sbin/mr \
-    $(COMMON_PATH)/rootdir/sbin/rb_report:root/sbin/rb_report \
+    $(COMMON_PATH)/rootdir/sbin/rb_repart:root/sbin/rb_repart \
     $(COMMON_PATH)/rootdir/sbin/ric:root/sbin/ric \
-    $(COMMON_PATH)/rootdir/sbin/wipedata:root/sbin/wipdata \
+    $(COMMON_PATH)/rootdir/sbin/wipedata:root/sbin/wipedata \
     $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
 
