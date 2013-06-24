@@ -19,3 +19,17 @@ etc/firmware/wcnss.mdt
 etc/firmware/wlan/prima/WCNSS_cfg.dat
 etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+lib/libwfdsm.so
+lib/libwfdrtsp.so
+lib/libmmwfdinterface.so
+lib/libwfduibcsrc.so
+lib/libmmwfdsinkinterface.so
+lib/libwfdmmsrc.so
+lib/libwfdcommonutils.so
+lib/libwfduibcinterface.so
+lib/libwfduibcsrcinterface.so
+lib/libmmwfdsrcinterface.so
+lib/libwfdnative.so
+lib/libwfdmmutils.so
+lib/libwfdmmsink.so
+bin/suntrold

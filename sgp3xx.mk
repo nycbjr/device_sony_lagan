@@ -123,7 +123,8 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml
+    $(COMMON_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    $(COMMON_PATH)/rootdir/system/etc/wfdconfig.xml:system/etc/wfdconfig.xml
 
 # Light
 PRODUCT_PACKAGES += \
