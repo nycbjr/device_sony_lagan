@@ -20,6 +20,7 @@ etc/firmware/wlan/prima/WCNSS_cfg.dat
 etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 lib/libwfdsm.so
+lib/lib_asb_tee.so
 lib/libwfdrtsp.so
 lib/libmmwfdinterface.so
 lib/libwfduibcsrc.so
