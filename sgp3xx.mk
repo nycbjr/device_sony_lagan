@@ -185,15 +185,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/charger:root/charger \
     $(COMMON_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
-    $(COMMON_PATH)/rootdir/sbin/checkabortedflash:root/sbin/checkabortedflash \
-    $(COMMON_PATH)/rootdir/sbin/e2fsck_static:root/sbin/e2fsck_static \
-    $(COMMON_PATH)/rootdir/sbin/ffsckwait:root/sbin/e2ffsckwait \
-    $(COMMON_PATH)/rootdir/sbin/fota-mke2fs:root/sbin/fota-mke2fs \
-    $(COMMON_PATH)/rootdir/sbin/fota-ua:root/sbin/fota-ua \
-    $(COMMON_PATH)/rootdir/sbin/mr:root/sbin/mr \
-    $(COMMON_PATH)/rootdir/sbin/rb_repart:root/sbin/rb_repart \
-    $(COMMON_PATH)/rootdir/sbin/ric:root/sbin/ric \
-    $(COMMON_PATH)/rootdir/sbin/wipedata:root/sbin/wipedata \
     $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
 
