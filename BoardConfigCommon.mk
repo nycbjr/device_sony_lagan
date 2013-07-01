@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from the common fusion3 definitions
-# -include device/sony/common/BoardConfigCommon.mk
+# inherit from common definitions
+-include device/sony/common/BoardConfigCommon.mk
 
 # inherit from qcom-common
 -include device/sony/qcom-common/BoardConfigCommon.mk
@@ -27,7 +27,7 @@ TARGET_KERNEL_SOURCE := kernel/sony/apq8064
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 TARGET_BOARD_PLATFORM := msm8960
 BOARD_VENDOR_PLATFORM := fusion3
-BOARD_VENDOR := sony
+#BOARD_VENDOR := sony
 
 # Architecture
 TARGET_ARCH_VARIANT_CPU := cortex-a9
@@ -70,8 +70,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
 
 # GPS
-TARGET_PROVIDES_GPS_LOC_API := true
-
+#TARGET_PROVIDES_GPS_LOC_API := true
 #BOARD_HAVE_NEW_QC_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
@@ -99,7 +98,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_QCOM_MM_AUDIO := true
-#BOARD_AUDIO_CAF_LEGACY_INPUT_BUFFERSIZE := true
+
+# Media
+TARGET_QCOM_MEDIA_VARIANT := caf
 
 # FM radio
 BOARD_USES_STE_FMRADIO := true
@@ -112,6 +113,7 @@ SOMC_CFG_SENSORS_GYRO_MPU3050 := yes
 SOMC_CFG_SENSORS_PROXIMITY_APDS9702 := yes
 SOMC_CFG_SENSORS_ACCEL_BMA250NA_INPUT := yes
 SOMC_CFG_SENSORS_COMPASS_AK8963 := yes
+SOMC_CFG_SENSORS_PROXIMITY_APDS9702 := false
 
 # Partition information
 BOARD_VOLD_MAX_PARTITIONS := 26
@@ -122,10 +124,8 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2147483648
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12425608704
 BOARD_CACHEIMAGE_PARTITION_SIZE := 576716800
 
-DEVICE_RESOLUTION := 1920x1200
-
-
 #TWRP flags
+DEVICE_RESOLUTION := 1920x1200
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_HAS_NO_RECOVERY_PARTITION := true
