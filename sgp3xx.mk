@@ -53,8 +53,8 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/gps.conf:system/etc/gps.conf
 
 # HDMI
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/DxHDCP.cfg:system/etc/DxHDCP.cfg
+#PRODUCT_COPY_FILES += \
+#    $(COMMON_PATH)/rootdir/system/etc/DxHDCP.cfg:system/etc/DxHDCP.cfg
 
 # WPA supplicant config
 PRODUCT_COPY_FILES += \
@@ -117,8 +117,7 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    $(COMMON_PATH)/rootdir/system/etc/wfdconfig.xml:system/etc/wfdconfig.xml
+    $(COMMON_PATH)/rootdir/system/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 # Light
 PRODUCT_PACKAGES += \
