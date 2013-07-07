@@ -46,11 +46,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     libnetcmdiface 
-#    libloc_adapter \
-#    libloc_eng \
-#    libloc_api_v02 \
-#    libgps.utils \
-#    gps.msm8960
 
 
 # GPS
@@ -68,9 +63,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
     $(COMMON_PATH)/rootdir/init.target.rc:root/init.target.rc \
-    $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
-    $(COMMON_PATH)/rootdir/system/etc/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
-    $(COMMON_PATH)/rootdir/system/etc/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh
+    $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom
+
+# Prima wifi config
+PRODUCT_COPY_FILES += \
+    $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 
 # QCOM Display
 PRODUCT_PACKAGES += \
@@ -137,8 +134,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
 
 PRODUCT_PACKAGES += \
-    FmRadio \
-    XperiaSettings
+    FmRadio
 
 # Key layouts and touchscreen
 PRODUCT_COPY_FILES += \
@@ -186,7 +182,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
     $(COMMON_PATH)/rootdir/sbin/tad_static:root/sbin/tad_static
 
-
 # Thermal monitor configuration
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/thermald.conf:system/etc/thermald.conf
@@ -194,16 +189,6 @@ PRODUCT_COPY_FILES += \
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
-
-# Radio and Telephony
-#PRODUCT_PROPERTY_OVERRIDES += \
-    telephony.lteOnCdmaDevice=0 \
-    ro.ril.transmitpower=true \
-    persist.radio.add_power_save=1
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/libril-qc-qmi-1.so \
-    ro.carrier=wifi-only
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -215,24 +200,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.handset.mic=analog \
     persist.audio.lowlatency.rec=false \
     af.resampler.quality=255 \
-    ro.qc.sdk.audio.fluencetype=none
-
-# Audio LPA
-PRODUCT_PROPERTY_OVERRIDES += \
-    lpa.decode=true
+    ro.qc.sdk.audio.fluencetype=none \
+    lpa.decode=false \
+    tunnel.decode=true \
+    tunnel.audiovideo.decode=true
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
-
-# Do not power down SIM card when modem is sent to Low Power Mode.
-#PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=1
-
-# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
-#PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.call_ring.multiple=0 \
-    telephony.lteOnGsmDevice=1
 
 # Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/sgp3xx-common/sgp3xx-common-vendor.mk)
