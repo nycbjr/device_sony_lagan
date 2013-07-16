@@ -90,7 +90,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/sgp3xx-common/custombootimg.mk
 TARGET_RELEASETOOLS_EXTENSIONS := device/sony/sgp3xx-common
-BOARD_CUSTOM_GRAPHICS := ../../../device/sony/sgp3xx-common/recovery/graphics.c
+BOARD_CUSTOM_GRAPHICS := ../../../device/sony/fusion3-common/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -144,7 +144,7 @@ TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,barrier=1,noauto_da_alloc,discard"
 TW_CRYPTO_FS_FLAGS := "0x00000406"
 TW_CRYPTO_KEY_LOC := "footer"
 TW_INCLUDE_FUSE_EXFAT := true
-TW_BOARD_CUSTOM_GRAPHICS := ../../../device/sony/sgp3xx-common/recovery/twrpgraphics.c
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/sony/fusion3-common/recovery/twrpgraphics.c
 TW_BRIGHTNESS_PATH := /sys/devices/i2c-0/0-0036/leds/lm3533-lcd-bl/brightness
 TW_MAX_BRIGHTNESS := 255
 TW_NO_USB_STORAGE := true
