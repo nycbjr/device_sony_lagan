@@ -18,6 +18,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
 COMMON_PATH := device/sony/sgp3xx-common
+FUSION_COMMON_PATH := device/sony/fusion3-common
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
@@ -172,7 +173,7 @@ PRODUCT_COPY_FILES += \
 
 # Post recovery script
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+    $(FUSION_COMMON_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
 
 # Additional sbin stuff
 PRODUCT_COPY_FILES += \
