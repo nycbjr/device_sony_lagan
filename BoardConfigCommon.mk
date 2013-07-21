@@ -18,7 +18,7 @@
 # inherit from qcom-common
 -include device/sony/qcom-common/BoardConfigCommon.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/sony/sgp3xx-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/sony/pollux-common/include
 
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/sony/apq8064
@@ -81,15 +81,15 @@ TARGET_NO_RPC := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/sgp3xx-common/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/sony/pollux-common/bluetooth
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-BOARD_CUSTOM_BOOTIMG_MK := device/sony/sgp3xx-common/custombootimg.mk
-TARGET_RELEASETOOLS_EXTENSIONS := device/sony/sgp3xx-common
+BOARD_CUSTOM_BOOTIMG_MK := device/sony/pollux-common/custombootimg.mk
+TARGET_RELEASETOOLS_EXTENSIONS := device/sony/pollux-common
 BOARD_CUSTOM_GRAPHICS := ../../../device/sony/fusion3-common/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 

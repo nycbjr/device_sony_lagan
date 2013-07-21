@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Inherit the fusion-common definitions
-$(call inherit-product, device/sony/sgp3xx-common/sgp3xx.mk)
+$(call inherit-product, device/sony/pollux-common/pollux.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 

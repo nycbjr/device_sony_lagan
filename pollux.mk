@@ -17,7 +17,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # qcom common
 $(call inherit-product, device/sony/qcom-common/qcom-common.mk)
 
-COMMON_PATH := device/sony/sgp3xx-common
+COMMON_PATH := device/sony/pollux-common
 FUSION_COMMON_PATH := device/sony/fusion3-common
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
@@ -209,4 +209,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
 
 # Include non-opensource parts if available
-$(call inherit-product-if-exists, vendor/sony/sgp3xx-common/sgp3xx-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/sony/pollux-common/pollux-common-vendor.mk)
