@@ -55,8 +55,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.sony.usb.rc:root/init.sony.usb.rc
 
 # Vold
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/etc/vold.fstab:system/etc/vold.fstab
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/rootdir/system/etc/vold.fstab:system/etc/vold.fstab
 
 # Touchpad
 +PRODUCT_COPY_FILES += \
