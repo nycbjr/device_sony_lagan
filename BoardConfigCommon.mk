@@ -30,6 +30,7 @@ BOARD_VENDOR_PLATFORM := fusion3
 
 # Architecture
 TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_VARIANT := krait
 
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
