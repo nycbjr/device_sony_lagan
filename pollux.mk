@@ -22,10 +22,10 @@ FUSION_COMMON_PATH := device/sony/fusion3-common
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
-ifneq ($(BOARD_HAVE_RADIO),false)
-    DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-radio
-    $(call inherit-product, $(COMMON_PATH)/radio.mk)
-endif
+#ifneq ($(BOARD_HAVE_RADIO),false)
+#    DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay-radio
+#    $(call inherit-product, $(COMMON_PATH)/radio.mk)
+#endif
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -220,6 +220,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd
+
+# Radio and Telephony
+PRODUCT_PROPERTY_OVERRIDES += \
+    telephony.lteOnCdmaDevice=0 \
+    telephony.lteOnGsmDevice=1 \
+    ro.ril.transmitpower=true \
+    persist.radio.add_power_save=1
+
+# Do not power down SIM card when modem is sent to Low Power Mode.
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.apm_sim_not_pwdn=1
+
+# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.call_ring.multiple=0
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 # Include non-opensource parts if available
 $(call inherit-product-if-exists, vendor/sony/pollux-common/pollux-common-vendor.mk)
