@@ -46,7 +46,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
 
 PRODUCT_PACKAGES += \
-    libnetcmdiface 
+    libnetcmdiface \
+    libwfcu \
+    conn_init
 
 
 # GPS
@@ -64,6 +66,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
     $(COMMON_PATH)/rootdir/fstab:root/fstab \
+    $(COMMON_PATH)/rootdir/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
     $(COMMON_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
     $(COMMON_PATH)/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
     $(COMMON_PATH)/rootdir/init.target.rc:root/init.target.rc \
@@ -132,12 +135,12 @@ PRODUCT_PACKAGES += \
     sensors.default
 
 # FM Radio
-PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
-    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
+#PRODUCT_COPY_FILES += \
+#    $(COMMON_PATH)/rootdir/system/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+#    frameworks/native/data/etc/com.stericsson.hardware.fm.receiver.xml:system/etc/permissions/com.stericsson.hardware.fm.receiver.xml
 
-PRODUCT_PACKAGES += \
-    FmRadio
+#PRODUCT_PACKAGES += \
+#    FmRadio
 
 # Key layouts and touchscreen
 PRODUCT_COPY_FILES += \
@@ -226,7 +229,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=0 \
     telephony.lteOnGsmDevice=1 \
     ro.ril.transmitpower=true \
-    persist.radio.add_power_save=1
+    persist.radio.add_power_save=1 \
+    ro.telephony.default_network=9
 
 # Do not power down SIM card when modem is sent to Low Power Mode.
 PRODUCT_PROPERTY_OVERRIDES += \

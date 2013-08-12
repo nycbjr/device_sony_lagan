@@ -14,6 +14,7 @@
 
 # Inherit the fusion-common definitions
 $(call inherit-product, device/sony/pollux-common/pollux.mk)
+$(call inherit-product, device/sony/fusion3-common/fusion3.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -45,6 +46,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
     $(LOCAL_PATH)/rootdir/system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x
 
+# Touchpad
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/system/usr/idc/clearpad.idc:system/usr/idc/clearpad.idc
+
 # Device specific init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.device.rc:root/init.device.rc
@@ -67,3 +72,4 @@ $(call inherit-product-if-exists, frameworks/native/build/tablet-10in-xhdpi-2048
 # call hwui memory config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
+$(call inherit-product-if-exists, vendor/sony/pollux-common/pollux-common-vendor.mk)

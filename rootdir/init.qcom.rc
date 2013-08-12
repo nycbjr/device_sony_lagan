@@ -57,6 +57,11 @@ on init
     write /sys/module/subsystem_restart/parameters/max_restarts 8
     write /sys/module/subsystem_restart/parameters/max_history_time 3600
 
+on init
+    # Set permissions for persist partition
+    mkdir /persist 0771 system system
+    mkdir /firmware 0771 system system
+
 on fs
     mount_all ./fstab.qcom
     setprop ro.crypto.fuse_sdcard true
@@ -233,9 +238,22 @@ on post-fs-data
     write /sys/devices/platform/wcnss_wlan.0/serial_number ${ro.serialno}
     write /dev/wcnss_wlan 1
 
+    mkdir /data/tombstones 0771 system system
+    mkdir /tombstones/modem 0771 system system
+    mkdir /tombstones/lpass 0771 system system
+    mkdir /tombstones/wcnss 0771 system system
+    mkdir /tombstones/dsps 0771 system system
+    mkdir /tombstones/mdm 0771 system system
+
+# to observe dnsmasq.leases file for dhcp information of soft ap.
+    chown dhcp system /data/misc/dhcp
+
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
 
+    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
+    # We chown/chmod /persist again so because mount is run as root + defaults
+    chown system system /persist
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
@@ -252,8 +270,31 @@ on post-fs-data
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
 
+    #Create directory used by sensor subsystem(dsps)
+    mkdir /data/system/sensors
+    chmod 665 /data/system/sensors
+    write /data/system/sensors/settings 1
+    chmod 660 /data/system/sensors/settings
+
+    # AKM setting data
+    mkdir /data/misc/sensors
+    chmod 775 /data/misc/sensors
+
+    mkdir /persist/sensors
+    chmod 775 /persist/sensors
+
     #Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
+
+    # Modify from 777 (for lightsensor) to 775
+    chmod 775 /persist/lightsensor
+
+    # Modify from 777 (for lightsensor calibration data) to 664
+    chmod 664 /persist/lightsensor/AL3010_Config.ini
+
+    chmod 664 /persist/ssn
+    chmod 664 /persist/60isn
+
 
     #Create directories for QuIPS
     mkdir /data/misc/quipc 0770 gps system
@@ -288,6 +329,8 @@ on post-fs-data
     setprop persist.radio.add_power_save 1
     exec /system/bin/cal_data_manager
 
+    # kickstart
+    mkdir /data/qcks 0770 system system
     chown system /dev/block/platform/msm_sdcc.1/by-name
 
     setprop vold.post_fs_data_done 1
@@ -454,10 +497,15 @@ on charger
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
+service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
+    class main
+    user root
+    oneshot
+
 service rmt_storage /system/bin/rmt_storage
     class main
     user root
-    disabled
+    oneshot
 
 # Fast Dormancy
 service fast-dormancy /system/bin/fast-dormancy
@@ -491,10 +539,14 @@ on property:bluetooth.hciattach=false
     setprop bluetooth.status off
 
 service bridgemgrd /system/bin/bridgemgrd
-    class late_start
+    class main
     user radio
-    group radio qcom_diag
-    disabled
+    group radio
+
+service qcom-c_main-sh /system/bin/sh /init.qcom.class_main.sh
+    class main
+    user root
+    oneshot
 
 service port-bridge /system/bin/port-bridge /dev/smd0 /dev/ttyGS0
     class late_start
@@ -524,6 +576,23 @@ service qmuxd /system/bin/qmuxd
     user radio
     group radio audio bluetooth gps qcom_diag
 
+service ks_checker /system/bin/sh /system/etc/kickstart_checker.sh
+    class core
+    oneshot
+
+service kickstart /system/bin/qcks -i /firmware/image/ -r /data/tombstones/mdm/
+    class core
+    user system
+    group system
+    disabled
+    oneshot
+
+on property:gsm.radio.kickstart=on
+    start kickstart
+
+on property:gsm.radio.kickstart=off
+    stop kickstart
+
 # SONY: TrimArea Daemon
 # Last 2 args: start block(blk size 128k), number of blocks(partitionsize(kb)/128(kb))
 service tad /sbin/tad_static /dev/block/mmcblk0 1,16
@@ -549,6 +618,11 @@ service updatemiscta /system/bin/updatemiscta
 
 service netmgrd /system/bin/netmgrd
     class main
+
+service sensors /system/bin/sensors.qcom
+    class late_start
+    user root
+    group root
 
 service kickstart /system/bin/qcks l
     oneshot
@@ -654,6 +728,14 @@ service ril-daemon1 /system/bin/rild -c 1
     user root
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw qcom_oncrpc diag qcom_diag log
+
+on property:ro.boot.baseband=mdm
+    start qmuxd
+    start netmgrd
+
+on property:ro.boot.baseband=apq
+    setprop ro.radio.noril yes
+    stop ril-daemon
 
 service thermald /system/bin/thermald -c /system/etc/thermald.conf
     class main

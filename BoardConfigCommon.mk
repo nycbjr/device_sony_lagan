@@ -13,10 +13,12 @@
 # limitations under the License.
 
 # inherit from common definitions
--include device/sony/common/BoardConfigCommon.mk
+#-include device/sony/common/BoardConfigCommon.mk
+
+-include device/sony/fusion3-common/BoardConfigCommon.mk
 
 # inherit from qcom-common
--include device/sony/qcom-common/BoardConfigCommon.mk
+#-include device/sony/qcom-common/BoardConfigCommon.mk
 
 TARGET_SPECIFIC_HEADER_PATH := device/sony/pollux-common/include
 
@@ -30,6 +32,7 @@ BOARD_VENDOR_PLATFORM := fusion3
 
 # Architecture
 TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_VARIANT := krait
 
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon-vfpv4 -mfloat-abi=softfp
@@ -89,13 +92,15 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/
 # Custom boot
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_BOOTIMG_MK := device/sony/pollux-common/custombootimg.mk
-TARGET_RELEASETOOLS_EXTENSIONS := device/sony/pollux-common
+#TARGET_RELEASETOOLS_EXTENSIONS := device/sony/pollux-common
 BOARD_CUSTOM_GRAPHICS := ../../../device/sony/fusion3-common/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_USERIMAGES_USE_EXT4 := true
+
+BOARD_USES_SECURE_SERVICES := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -105,8 +110,8 @@ TARGET_USES_QCOM_MM_AUDIO := true
 TARGET_QCOM_MEDIA_VARIANT := caf
 
 # FM radio
-BOARD_USES_STE_FMRADIO := true
-COMMON_GLOBAL_CFLAGS += -DSTE_FM
+#BOARD_USES_STE_FMRADIO := true
+#COMMON_GLOBAL_CFLAGS += -DSTE_FM
 
 # Sensors
 SOMC_CFG_SENSORS := true
