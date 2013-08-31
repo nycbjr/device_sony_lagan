@@ -1,4 +1,5 @@
 # Copyright (c) 2012, Code Aurora Forum. All rights reserved.
+# Copyright (C) 2013, Sony Mobile Communications AB.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,14 +26,14 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
+# NOTE: This file has been modified by Sony Mobile Communications AB.
+# Modifications are licensed under the License.
 #
 
 import init.sony.rc
 
 on early-init
     mkdir /firmware 0771 system system
-    symlink /storage/sdcard1 /mnt/ext_card
-    symlink /storage/usbdisk /mnt/usbdisk
 
 service ril-qmi /system/bin/sh /init.qcom.ril.sh
     class main
@@ -42,6 +43,7 @@ service ril-qmi /system/bin/sh /init.qcom.ril.sh
 on fs
     
     
+    mkdir /mnt/idd 0755 idd idd
 
     # start service that shows the graphics while checking filesystem.
     start ffsckwait
@@ -51,12 +53,12 @@ on fs
     # notify the service that starts the graphics to stop.
     exec /sbin/ffsckwait e
 
+    chown idd idd /mnt/idd
+    chmod 0755 /mnt/idd
+
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/cache
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1,discard
 
     mkdir /lta-label 0555 system system
     wait /dev/block/platform/msm_sdcc.1/by-name/LTALabel
@@ -77,17 +79,33 @@ on fs
     exec /sbin/fota-ua c
 
     # SONY: Start early TA-users
-#    exec /sbin/checkabortedflash
+    exec /sbin/checkabortedflash
     exec /sbin/mr
     exec /sbin/wipedata
     exec /system/bin/taimport
+
+    # SONY: install kernel hid-sony.ko
+    insmod /system/lib/modules/ps3ctrl/hid-sony.ko
 
     # SONY: Remote storage service should be started after master reset
     # due to that the modem file system is formatted in the master reset
     start rmt_storage
 
 on post-fs
-   mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system rw remount barrier=1
+    # Remove lost+found in user
+    exec /system/bin/rm -r /data/lost+found
+    mkdir /data/lost+found 0770 root root
+    exec /system/bin/rm -r /cache/lost+found
+    mkdir /cache/lost+found 0770 root root
+    exec /system/bin/rm -r /system/lost+found
+    mkdir /system/lost+found 0770 root root
+    exec /system/bin/rm -r /mnt/idd/lost+found
+    mkdir /mnt/idd/lost+found 0770 root root
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro remount barrier=1
+
+on post-fs-data
+    # acquire wakelock (release at boot_completed)
+    write /sys/power/wake_lock INIT_boot
 
 on early-boot
     exec /system/bin/sh /system/etc/pre_hw_config.sh
@@ -96,17 +114,35 @@ on boot
    write /sys/devices/i2c-3/3-0024/cyttsp_update_fw 1
    write /sys/devices/i2c-3/3-005b/update_fw 1
    
+   # Install exfat module to support exfat file system
+   insmod /system/lib/modules/texfat.ko
 
 
 
+
+
+# Camera
 on property:debug.camera.enable.qcamerasvr=true
    start qcamerasvr
+
+on property:sys.boot_completed=1
+    # release wakelock
+    write /sys/power/wake_unlock INIT_boot
+
+on property:vold.decrypt=trigger_reset_main
+    # acquire wakelock
+    write /sys/power/wake_lock INIT_decrypt
+
+on property:vold.decrypt=trigger_post_fs_data
+    # release wakelock
+    write /sys/power/wake_unlock INIT_decrypt
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user system
-    group system camera inet input graphics bluetooth
+    group system camera inet input graphics bluetooth net_bt_stack
+# Camera
     disabled
 
 #start GNSS/Sensor interface daemon
@@ -120,7 +156,7 @@ service gsiff_daemon /system/bin/gsiff_daemon
 service tad_static /sbin/tad_static /dev/block/mmcblk0 1,16
     user root
     group root
-    socket tad stream 0660 system system
+    socket tad stream 0660 system trimarea
     class trimarea
 
 # SONY: Trim Area QMI client
@@ -173,11 +209,23 @@ service qseecomd /system/bin/qseecomd
 
 # Start kickstart if mdm is detected
 on property:ro.baseband=mdm
+    write /sys/module/rmnet_usb/parameters/rmnet_data_init 1
+    # Allow QMUX daemon to assign port open wait time
+    chown radio radio /sys/devices/virtual/hsicctl/hsicctl0/modem_wait
     symlink /mnt/qcks /data/qcks
     start kickstart
 
 # Start up mdm_helper if sglte detected
 on property:ro.baseband=sglte
+    mkdir /data/misc/mdmhelperdata 0700
+    start mdm_helper
+
+# Start up mdm_helper if dsda2 detected
+on property:ro.baseband=dsda2
+    mkdir /data/misc/mdmhelperdata 0700
+    start mdm_helper
+
+on property:ro.baseband=sglte2
     mkdir /data/misc/mdmhelperdata 0700
     start mdm_helper
 
@@ -212,8 +260,17 @@ service usf-post-boot /system/bin/sh /system/etc/usf_post_boot.sh
     disabled
     oneshot
 
+service set-governor /system/bin/sh /system/etc/set_governor.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
 on property:init.svc.bootanim=stopped
     start usf-post-boot
+
+on property:init.svc.bootanim=stopped
+    start set-governor
 
 service time_daemon /system/bin/time_daemon
    class late_start

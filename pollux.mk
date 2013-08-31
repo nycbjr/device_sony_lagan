@@ -67,14 +67,23 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
     $(COMMON_PATH)/rootdir/fstab:root/fstab \
     $(COMMON_PATH)/rootdir/init.qcom.class_main.sh:root/init.qcom.class_main.sh \
+    $(COMMON_PATH)/rootdir/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
     $(COMMON_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
+    $(COMMON_PATH)/rootdir/init.qcom.sh:root/init.qcom.sh \
+    $(COMMON_PATH)/rootdir/init.qcom.ril.sh:root/init.qcom.ril.sh \
     $(COMMON_PATH)/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
+    $(COMMON_PATH)/rootdir/init.usbmode.sh:root/init.usbmode.sh \
     $(COMMON_PATH)/rootdir/init.target.rc:root/init.target.rc \
-    $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom \
+    $(COMMON_PATH)/rootdir/init.sony.rc:root/init.sony.rc \
+    $(COMMON_PATH)/rootdir/init.sony-platform.rc:root/init.sony-platform.rc \
+    $(COMMON_PATH)/rootdir/init.sony-device.rc:root/init.sony-device.rc \
+    $(COMMON_PATH)/rootdir/fstab.qcom:recovery/root/fstab.qcom
+
+#/system/etc
+PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/system/etc/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
     $(COMMON_PATH)/rootdir/system/etc/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh \
     $(COMMON_PATH)/rootdir/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
-
 
 # QCOM Display
 PRODUCT_PACKAGES += \
@@ -188,7 +197,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/sbin/wait4tad_static:root/sbin/wait4tad_static \
     $(COMMON_PATH)/rootdir/sbin/checkabortedflash:root/sbin/checkabortedflash \
     $(COMMON_PATH)/rootdir/sbin/e2fsck_static:root/sbin/e2fsck_static \
-    $(COMMON_PATH)/rootdir/sbin/ffsckwait:root/sbin/e2ffsckwait \
+    $(COMMON_PATH)/rootdir/sbin/ffsckwait:root/sbin/ffsckwait \
     $(COMMON_PATH)/rootdir/sbin/fota-mke2fs:root/sbin/fota-mke2fs \
     $(COMMON_PATH)/rootdir/sbin/fota-ua:root/sbin/fota-ua \
     $(COMMON_PATH)/rootdir/sbin/mr:root/sbin/mr \
