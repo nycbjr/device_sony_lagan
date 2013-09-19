@@ -13,7 +13,6 @@
 # limitations under the License.
 
 # Inherit the fusion-common definitions
-$(call inherit-product, device/sony/pollux-common/pollux.mk)
 $(call inherit-product, device/sony/fusion3-common/fusion3.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -61,10 +60,6 @@ PRODUCT_COPY_FILES += \
 # Vold
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/vold.fstab:system/etc/vold.fstab
-
-# Touchpad
-+PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/system/usr/idc/clearpad.idc:system/usr/idc/clearpad.idc
 
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
